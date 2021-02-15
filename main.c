@@ -8,6 +8,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int is_leapyear(int year)
+{
+    //Prüfung, ob das eingegebene JAhr ein Schaltjahr ist
+    //Jahr ohne Rest durch 4 teilbar?
+    if (year%4 == 0)
+    {
+         // Jahr ohne Rest durch 100 teilbar?
+        if (year%100 == 0)
+        {
+            //Jahr ohne Rest durch 400 teilbar?
+            if(year%400 == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else
+        {
+          return 1;
+        }
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 int main()
 {
     int i;
@@ -24,31 +54,8 @@ int main()
     scanf("%i", &year);
     fflush(stdin);
 
-    //Prüfung, ob das eingegebene JAhr ein Schaltjahr ist
-    //Jahr ohne Rest durch 4 teilbar?
-    if (year%4 == 0)
-    {
-         // Jahr ohne Rest durch 100 teilbar?
-        if (year%100 == 0)
-        {
-            //Jahr ohne Rest durch 400 teilbar?
-            if(year%400 == 0)
-            {
-                leapyear = 1;
-            }
-            else
-            {
-                leapyear = 0;
-            }
-        }
-        else
-        {
-          leapyear = 1;
-        }
-    }
-
     //setzten der Tage im Februar auf 29, wenn das eingegebene Jahr ein Schaltjahr ist
-    if (leapyear == 1)
+    if (is_leapyear(year) == 1)
     {
         days_per_month[1] = 29;
     }
