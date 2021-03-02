@@ -36,6 +36,27 @@ int is_leapyear(int year)
     {
         return 0;
     }
+
+    if (year < 1582)
+    {
+        return -1;
+    }
+}
+
+int exists_date(int day, int month, int year)
+{
+    if ((day < 1) && (month < 1) && (year < 1582))
+    {
+        return 0;
+    }
+    else if ((day > 31) && (month > 12) && (year > 2400))
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 int main()
@@ -54,12 +75,6 @@ int main()
     scanf("%i", &year);
     fflush(stdin);
 
-    //setzten der Tage im Februar auf 29, wenn das eingegebene Jahr ein Schaltjahr ist
-    if (is_leapyear(year) == 1)
-    {
-        days_per_month[1] = 29;
-    }
-
     //Eingabeauforderung des Jahres und löschen des Tastaturpuffers
     printf("\nBitte geben Sie den Monat ein. ");
     scanf("%i", &month);
@@ -69,6 +84,16 @@ int main()
     printf("\nBitte geben Sie den Tag ein. ");
     scanf("%i", &day);
     fflush(stdin);
+
+    //Prüfen, ob das Datum existiert
+    if(exists_date(day, month, year) == 1)
+    {
+        printf("\nDatum zu gross oder zu klein!");
+    }
+    else
+    {
+        printf("\nDatum korrekt eingegeben. Berechnung des Tages gestartet.");
+    }
 
     //Berechnung des Tages im Jahr
     for (i = 0; i < month - 1; i ++)
