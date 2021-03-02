@@ -8,6 +8,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+struct dateStruct
+{
+    int day;
+    int month;
+    int year;
+};
+
 int is_leapyear(int year)
 {
     //Prüfung, ob das eingegebene JAhr ein Schaltjahr ist
@@ -45,11 +53,7 @@ int is_leapyear(int year)
 
 int exists_date(int day, int month, int year)
 {
-    if ((day < 1) && (month < 1) && (year < 1582))
-    {
-        return 0;
-    }
-    else if ((day > 31) && (month > 12) && (year > 2400))
+    if ((day < 1) && (month < 1) && (year < 1582) || (day > 31) && (month > 12) && (year > 2400))
     {
         return 0;
     }
@@ -59,12 +63,16 @@ int exists_date(int day, int month, int year)
     }
 }
 
+int day_of_the_year(int dayoftheyear, int day)
+{
+    return dayoftheyear + day;
+}
+
+
 int main()
 {
     int i;
-    int year = 0;
-    int month = 0;
-    int day = 0;
+    struct dateStruct date;
     int dayofyear = 0;
     int leapyear;
     int days_per_month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -72,21 +80,21 @@ int main()
 
     //Eingabeauforderung des Jahres und löschen des Tastaturpuffers
     printf("Bitte geben Sie das Jahr ein. ");
-    scanf("%i", &year);
+    scanf("%i", &date.year);
     fflush(stdin);
 
     //Eingabeauforderung des Jahres und löschen des Tastaturpuffers
     printf("\nBitte geben Sie den Monat ein. ");
-    scanf("%i", &month);
+    scanf("%i", &date.month);
     fflush(stdin);
 
     //Eingabeauforderung des Jahres und löschen des Tastaturpuffers
     printf("\nBitte geben Sie den Tag ein. ");
-    scanf("%i", &day);
+    scanf("%i", &date.day);
     fflush(stdin);
 
     //Prüfen, ob das Datum existiert
-    if(exists_date(day, month, year) == 1)
+    if(exists_date(date.day, date.month, date.year) == 1)
     {
         printf("\nDatum zu gross oder zu klein!");
     }
@@ -96,14 +104,14 @@ int main()
     }
 
     //Berechnung des Tages im Jahr
-    for (i = 0; i < month - 1; i ++)
+    for (i = 0; i < date.month - 1; i ++)
     {
        dayofyear = dayofyear + days_per_month[i];
        //printf("%i", days_per_month[i]);
     }
 
     //Addieren der angegebenen Tage
-    dayofyear = dayofyear + day;
+    day_of_the_year(dayofyear, date.day);
 
     //Ausgabe
     if(dayofyear > 366)
