@@ -7,3 +7,6 @@ Leider habe ich bei der Kompilierung Fehlermeldungen bekommen, die sich mir nich
 Auch Menschen, die ich gebeten habe mir zu helfen, wussten leider keine Lösung.
 Ich werde weiterhin versuchen die Fehler zu beseitigen, auch wenn es nach Ende der Abgabefrist sein sollte.
 Über Hilfe würde ich mich sehr freuen!
+
+Update 17.03.2021:
+Ich hab das Problem mit Hilfe von MH gefunden und korrigiert, sodass mein Programm nun funktioniert.

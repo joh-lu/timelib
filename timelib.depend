@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1615968445 source:c:\users\ohnen\desktop\lf4&lf5\lf5\github\timelib\lib.c
+	<stdio.h>
+	<stdlib.h>
+
+1615221696 source:c:\users\ohnen\desktop\lf4&lf5\lf5\github\timelib\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lib.h"
+
+1615221606 c:\users\ohnen\desktop\lf4&lf5\lf5\github\timelib\lib.h
+

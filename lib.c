@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 struct dateStruct
 {
     int day;
@@ -114,14 +117,17 @@ struct dateStruct input_date(struct dateStruct date)
         //Eingabeauforderung des Jahres und löschen des Tastaturpuffers
         printf("\nBitte geben Sie das Jahr ein. ");
         scanf("%i", &date.year);
+        fflush(stdin);
 
         //Eingabeauforderung des Jahres und löschen des Tastaturpuffers
         printf("\nBitte geben Sie den Monat ein. ");
         scanf("%i", &date.month);
+        fflush(stdin);
 
         //Eingabeauforderung des Jahres und löschen des Tastaturpuffers
         printf("\nBitte geben Sie den Tag ein. ");
         scanf("%i", &date.day);
+        fflush(stdin);
 
         //Prüfen, ob das Datum existiert
         if(exists_date(date.day, date.month, date.year) == 0)
